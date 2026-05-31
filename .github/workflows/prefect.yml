@@ -32,4 +32,7 @@ deployments:
     work_queue_name: null
     job_variables: {}
   enforce_parameter_schema: true
-  schedules: []
+  schedules:
+    - cron: "* * * * *"
+          timezone: "UTC"
+          active: true
