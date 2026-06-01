@@ -5,11 +5,6 @@ def fetch_user_info(user_id: int):
     # Simulate fetching user info
     return {"user_id": user_id, "name": "John Doe"}
 
-@task
-def fetch_user_info(user_id: int):
-    # Simulate fetching user info
-    return {"user_id": user_id, "name": "John Doe"}
-
 @flow
 def user_account_flow(user_id: int = 101):
     user_info = fetch_user_info(user_id)
