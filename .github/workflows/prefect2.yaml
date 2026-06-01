@@ -1,0 +1,30 @@
+name: Trigger Prefect Job
+
+on:
+  schedule:
+    # GitHub Actions minimum limit is every 5 minutes
+    - cron: '* * * * *'
+  # Allows manual triggering from the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  run-prefect-flow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-node-version: '3.96'
+
+      - name: Install Prefect
+        run: pip install prefect
+
+      - name: Trigger Prefect Deployment
+        env:
+          PREFECT_API_KEY: ${{ secrets.pnu_yAjwjMmkDDGANyfBG8raatd2AxnaXw1R6vpS}}
+          PREFECT_API_URL: ${{ secrets.https://app.prefect.cloud/account/d067fdcc-2bb5-4b70-bfb0-0d4bc46722b9/workspace/b17d708e-4dc2-4403-981c-9fa5bc1f1a12}} }}
+        # Replace with your actual deployment name: "flow-name/deployment-name"
+        run: prefect deployment run "my-flow/my-deployment"
