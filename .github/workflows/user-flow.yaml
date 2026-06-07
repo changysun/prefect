@@ -26,5 +26,5 @@ jobs:
         env:
           PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
           PREFECT_API_URL: ${{ secrets.PREFECT_API_URL }}
-        # Replaces 'deployment-name' and 'flow-name' with your Prefect definitions
+  # Replaces 'deployment-name' and 'flow-name' with your Prefect definitions
         run: prefect deployment run "user_flow/user_account_flow"
