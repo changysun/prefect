@@ -1,0 +1,30 @@
+# .github/workflows/prefect-trigger.yml
+name: Trigger Prefect Job Every Minute
+
+on:
+  schedule:
+    # GitHub Action Cron for every minute (Subject to GitHub queue delays)
+    - cron: '* * * * *'
+  workflow_dispatch: # Allows you to manually trigger via the GitHub UI
+
+jobs:
+  run-prefect-flow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Prefect
+        run: pip install prefect
+
+      - name: Trigger Prefect Deployment
+        env:
+          PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
+          PREFECT_API_URL: ${{ secrets.PREFECT_API_URL }}
+        # Replaces 'deployment-name' and 'flow-name' with your Prefect definitions
+        run: prefect deployment run "user_flow/user_account_flow"
