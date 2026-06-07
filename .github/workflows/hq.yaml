@@ -20,5 +20,5 @@ jobs:
           requirements-file-paths: ./examples/simple/requirements.txt
           deployment-file-path: ./examples/simple/prefect.yaml
         env:
-          PREFECT_API_KEY: ${{ secrets.pnu_yAjwjMmkDDGANyfBG8raatd2AxnaXw1R6vpS}}
-          PREFECT_API_URL: ${{ secrets.https://api.prefect.cloud/api/accounts/d067fdcc-2bb5-4b70-bfb0-0d4bc46722b9}
+          PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY}}
+          PREFECT_API_URL: ${{ secrets.PREFECT_API_URL}}
