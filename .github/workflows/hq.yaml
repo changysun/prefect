@@ -1,0 +1,24 @@
+name: Deploy a Prefect flow
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy_flow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run Prefect Deploy
+        uses: PrefectHQ/actions-prefect-deploy@v4
+        with:
+          deployment-names: Simple
+          requirements-file-paths: ./examples/simple/requirements.txt
+          deployment-file-path: ./examples/simple/prefect.yaml
+        env:
+          PREFECT_API_KEY: ${{ secrets.pnu_yAjwjMmkDDGANyfBG8raatd2AxnaXw1R6vpS}}
+          PREFECT_API_URL: ${{ secrets.https://api.prefect.cloud/api/accounts/d067fdcc-2bb5-4b70-bfb0-0d4bc46722b9}
