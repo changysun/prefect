@@ -1,0 +1,17 @@
+name: Trigger Prefect
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Deployment
+        run: |
+          curl -X POST \
+          "$https://api.prefect.cloud/api/accounts/d067fdcc-2bb5-4b70-bfb0-0d4bc46722b9/deployments/9c7ada30-7e17-415e-9659-b016eb21e19f/user_flow.py:user_account_flow" \
+          -H "Authorization: pnu_yAjwjMmkDDGANyfBG8raatd2AxnaXw1R6vpS"
