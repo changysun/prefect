@@ -2,9 +2,9 @@
 name: Trigger Prefect Job Every Minute
 
 on:
-  schedule:
+ schedule:
     # GitHub Action Cron for every minute (Subject to GitHub queue delays)
-    - cron: '* * * * *'
+    #- cron: '* * * * *'
   workflow_dispatch: # Allows you to manually trigger via the GitHub UI
 
 jobs:
